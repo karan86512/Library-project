@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Search Book</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, sans-serif;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background-image:url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
+background-size:cover;
+background-position:center;
+}
+
+/* HEADER */
+
+.header{
+background:linear-gradient(90deg,#2c3e50,#1abc9c);
+color:white;
+padding:18px;
+text-align:center;
+font-size:22px;
+letter-spacing:1px;
+}
+
+/* CONTAINER */
+
+.container{
+width:85%;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+text-align:center;
+}
+
+/* SEARCH BAR */
+
+.search-box{
+margin-bottom:25px;
+}
+
+input{
+width:60%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:14px;
+transition:0.3s;
+}
+
+input:focus{
+border-color:#1abc9c;
+outline:none;
+box-shadow:0 0 5px rgba(26,188,156,0.4);
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+border-radius:10px;
+overflow:hidden;
+}
+
+th,td{
+padding:12px;
+text-align:center;
+}
+
+th{
+background:#1abc9c;
+color:white;
+}
+
+tr:nth-child(even){
+background:#f2f2f2;
+}
+
+tr:hover{
+background:#e8f8f5;
+}
+
+/* BACK LINK */
+
+a{
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+color:#2c3e50;
+font-weight:bold;
+transition:0.3s;
+}
+
+a:hover{
+color:#1abc9c;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+📚 Library Management System
+</div>
+
+<div class="container">
+
+<h2>Search Book</h2>
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="🔍 Search by Book Name or Author">
+</div>
+
+<table id="bookTable">
+
+<tr>
+<th>ID</th>
+<th>Book Name</th>
+<th>Author</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Software Engineering</td>
+<td>James Clear</td>
+<td>Available</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Data Structure</td>
+<td>Robert Kiyosaki</td>
+<td>Issued</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Database Management System</td>
+<td>Paulo Coelho</td>
+<td>Available</td>
+</tr>
+
+</table>
+
+<a href="3th.html">⬅ Back to Dashboard</a>
+
+</div>
+
+<script>
+
+let input = document.getElementById("searchInput");
+
+input.addEventListener("keyup", function(){
+
+let filter = input.value.toLowerCase();
+
+let rows = document.querySelectorAll("#bookTable tr");
+
+rows.forEach(function(row,index){
+
+if(index === 0) return;
+
+let text = row.innerText.toLowerCase();
+
+row.style.display = text.includes(filter) ? "" : "none";
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

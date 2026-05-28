@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Forgot Password</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background-image:url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
+background-size:cover;
+background-position:center;
+}
+
+.container{
+width:350px;
+background:white;
+padding:30px;
+margin:120px auto;
+text-align:center;
+border-radius:10px;
+box-shadow:0px 0px 15px gray;
+}
+
+h2{margin-bottom:10px;}
+
+p{
+color:gray;
+font-size:14px;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px;
+border-radius:5px;
+border:1px solid gray;
+}
+
+button{
+background:#3498db;
+color:white;
+border:none;
+padding:10px;
+width:95%;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2c80b4;
+}
+
+.hidden{
+display:none;
+}
+
+a{
+display:block;
+margin-top:10px;
+color:#3498db;
+text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 id="title">Forgot Password</h2>
+<p id="subtitle">Enter your registered email</p>
+
+<!-- STEP 1: EMAIL -->
+<div id="step1">
+<input type="email" id="email" placeholder="Enter Email">
+<button onclick="sendOTP()">Send OTP</button>
+</div>
+
+<!-- STEP 2: OTP -->
+<div id="step2" class="hidden">
+<input type="text" id="otp" placeholder="Enter OTP">
+<button onclick="verifyOTP()">Verify OTP</button>
+</div>
+
+<!-- STEP 3: RESET PASSWORD -->
+<div id="step3" class="hidden">
+<input type="password" id="newpass" placeholder="New Password">
+<input type="password" id="confirmpass" placeholder="Confirm Password">
+<button onclick="resetPassword()">Update Password</button>
+</div>
+
+<a href="1st.html">Back to Login</a>
+
+</div>
+
+<script>
+
+let generatedOTP;
+
+// STEP 1
+function sendOTP(){
+let email = document.getElementById("email").value;
+
+if(email==""){
+alert("Please enter email");
+return;
+}
+
+generatedOTP = Math.floor(1000 + Math.random() * 9000);
+
+alert("Your OTP is: " + generatedOTP);
+
+// move to step 2
+document.getElementById("step1").classList.add("hidden");
+document.getElementById("step2").classList.remove("hidden");
+
+document.getElementById("title").innerText="OTP Verification";
+document.getElementById("subtitle").innerText="Enter the OTP sent to your email";
+}
+
+// STEP 2
+function verifyOTP(){
+let userOTP = document.getElementById("otp").value;
+
+if(userOTP == generatedOTP){
+
+document.getElementById("step2").classList.add("hidden");
+document.getElementById("step3").classList.remove("hidden");
+
+document.getElementById("title").innerText="Reset Password";
+document.getElementById("subtitle").innerText="Enter your new password";
+
+}else{
+alert("Invalid OTP");
+}
+}
+
+// STEP 3
+function resetPassword(){
+let pass = document.getElementById("newpass").value;
+let confirm = document.getElementById("confirmpass").value;
+
+if(pass=="" || confirm==""){
+alert("Fill all fields");
+return;
+}
+
+if(pass !== confirm){
+alert("Passwords do not match");
+return;
+}
+
+alert("Password Updated Successfully!");
+
+// redirect to login
+window.location.href="index.html";
+}
+
+</script>
+
+</body>
+</html>

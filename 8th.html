@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Student Profile</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, sans-serif;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background-image:url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
+background-size:cover;
+background-position:center;
+}
+
+/* HEADER */
+
+.header{
+background:linear-gradient(90deg,#2c3e50,#1abc9c);
+color:white;
+padding:18px;
+text-align:center;
+font-size:22px;
+letter-spacing:1px;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+width:85%;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* PROFILE CARD */
+
+.profile{
+display:flex;
+align-items:center;
+background:#f8f9fa;
+padding:20px;
+border-radius:10px;
+margin-bottom:25px;
+}
+
+.profile img{
+width:110px;
+height:110px;
+border-radius:50%;
+margin-right:25px;
+border:4px solid #1abc9c;
+}
+
+.profile h3{
+margin-bottom:5px;
+color:#2c3e50;
+}
+
+.profile p{
+color:#555;
+}
+
+/* TABLE */
+
+h3{
+margin-bottom:15px;
+color:#2c3e50;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+border-radius:10px;
+overflow:hidden;
+}
+
+th,td{
+padding:12px;
+text-align:center;
+}
+
+th{
+background:#1abc9c;
+color:white;
+}
+
+tr:nth-child(even){
+background:#f2f2f2;
+}
+
+tr:hover{
+background:#e8f8f5;
+}
+
+/* BACK BUTTON */
+
+a{
+display:block;
+margin-top:25px;
+text-align:center;
+text-decoration:none;
+color:#2c3e50;
+font-weight:bold;
+transition:0.3s;
+}
+
+a:hover{
+color:#1abc9c;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+📚 Library Management System
+</div>
+
+<div class="container">
+
+<div class="profile">
+
+<img src="profile photo.png">
+
+<div>
+<h3>Karan More</h3>
+<p><b>Email:</b> km097554@gmail.com</p>
+<p><b>Course:</b> BSc Computer Science</p>
+<p><b>Mobile no. :</b> 9699298230</p>
+</div>
+
+</div>
+<a href="edit profile.html" style="
+display:inline-block;
+margin-top:5px;
+margin-bottom:15px;  /* 👈 yeh add kiya */
+background:#1abc9c;
+color:white;
+padding:5px 8px;
+border-radius:2px;
+text-decoration:none;
+font-size:12px;
+">
+✏️ Edit Profile 
+</a>
+
+
+<h3>Issued Books</h3>
+<table>
+
+<tr>
+<th>Book ID</th>
+<th>Book Name</th>
+<th>Issue Date</th>
+<th>Return Date</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Software Engineering</td>
+<td>10 Mar 2026</td>
+<td>20 Mar 2026</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Data Structure
+<td>5 Mar 2026</td>
+<td>15 Mar 2026</td>
+</tr>
+
+</table>
+
+<a href="3th.html">⬅ Back to Dashboard</a>
+<a href="dashboard.html">
+</div>
+
+</body>
+
+</html>

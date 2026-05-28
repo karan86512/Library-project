@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Due Date Notification</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:20px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+input,button{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+background:#1abc9c;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.alert{
+padding:10px;
+background:#ffcccc;
+color:red;
+border-radius:5px;
+display:none;
+text-align:center;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📢 Due Date Notification</h2>
+
+<input type="text" id="name" placeholder="Student Name" required>
+<input type="email" id="email" placeholder="Student Email" required>
+<input type="date" id="duedate" required>
+
+<button onclick="checkDue()">Check & Send Notification</button>
+
+<div class="alert" id="alertBox">
+⚠️ Due date aa gayi hai! Email bheja gaya.
+</div>
+
+</div>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+<script>
+// Initialize EmailJS
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY"); // 🔑 yaha apni Public Key dalna
+})();
+
+function checkDue(){
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let dueDate = document.getElementById("duedate").value;
+
+if(name=="" || email=="" || dueDate==""){
+alert("Please fill all fields!");
+return;
+}
+
+let today = new Date().toISOString().split('T')[0];
+
+if(dueDate <= today){
+document.getElementById("alertBox").style.display="block";
+
+// Send Email
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+to_name: name,
+to_email: email,
+message: "Your library book due date has arrived. Please return it."
+})
+.then(function(response){
+console.log("SUCCESS!", response.status, response.text);
+}, function(error){
+console.log("FAILED...", error);
+});
+}else{
+alert("Abhi due date nahi aayi 👍");
+}
+}
+</script>
+
+</body>
+</html>
